@@ -6,10 +6,11 @@ export var jump_impulse = 25
 
 var velocity = Vector3.ZERO
 
-onready var pivot = $Body
+onready var pivot = $PlayerModel
+onready var animation = $PlayerModel/AnimationPlayer
 
 func IsMoving():
-	print(velocity.length())
+	animation.play("Move")
 	return (velocity.length() < 1.5)
 
 func _physics_process(delta):
@@ -19,7 +20,6 @@ func _physics_process(delta):
 	footsteps_loop()
 	jump()
 	velocity = move_and_slide(velocity, Vector3.UP)
-	
 	
 func get_input_vector():
 	var input_vector = Vector3.ZERO
@@ -33,8 +33,12 @@ func apply_movement(input_vector):
 	velocity.x = input_vector.x * max_speed
 	velocity.z = input_vector.z * max_speed
 	
+	if input_vector == Vector3.ZERO:
+		animation.play("Idle")
+		
 	if input_vector != Vector3.ZERO:
-		pivot.look_at(translation + input_vector, Vector3.UP)
+		pivot.look_at(input_vector, Vector3.UP)
+		animation.play("Move")
 	
 	
 func apply_gravity(delta):
