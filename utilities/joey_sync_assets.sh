@@ -1,1 +1,1 @@
-aws s3 sync s3://duality-game ../ --profile joeymeyer1986
+aws s3 sync s3://duality-game ../assets/ --profile joeymeyer1986
