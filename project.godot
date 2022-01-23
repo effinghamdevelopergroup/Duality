@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Duality"
-run/main_scene="res://scenes/Joey-Training/Spatial.tscn"
+run/main_scene="res://scenes/testScenes/test_animations.tscn"
 config/icon="res://icon.png"
 
 [autoload]

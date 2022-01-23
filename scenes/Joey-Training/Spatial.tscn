@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/prototype/playerTest2.fbx" type="PackedScene" id=1]
 [ext_resource path="res://assets/prototype/playerTest1.fbx" type="PackedScene" id=2]
 [ext_resource path="res://scripts/voxel/Chunk.gd" type="Script" id=3]
+[ext_resource path="res://assets/kit1/base/Doorway_01.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/kit1/base/Material_001.material" type="Material" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.626391
@@ -42,4 +44,9 @@ shape = SubResource( 2 )
 [node name="MeshInstance" type="MeshInstance" parent="Floor"]
 transform = Transform( 1, 0, 0, 0, 0.0610842, 0, 0, 0, 1, 0, -0.0581242, 0 )
 mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Doorway_01" type="MeshInstance" parent="."]
+material_override = ExtResource( 5 )
+mesh = ExtResource( 4 )
 material/0 = null
