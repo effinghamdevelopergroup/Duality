@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/prototype/playerTest1.fbx" type="PackedScene" id=1]
 [ext_resource path="res://assets/prototype/playerTest2.fbx" type="PackedScene" id=2]
+[ext_resource path="res://scenes/testScenes/basicMoveTest.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 1.47727
@@ -92,6 +93,8 @@ tracks/2/keys = {
 
 [sub_resource type="ShaderMaterial" id=6]
 
+[sub_resource type="ConcavePolygonShape" id=7]
+
 [node name="Spatial" type="Spatial"]
 
 [node name="Camera" type="Camera" parent="."]
@@ -99,6 +102,7 @@ transform = Transform( 1, 0, 0, 0, 0.990627, 0.136597, 0, -0.136597, 0.990627, 0
 
 [node name="KinematicBody" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.36967, 0 )
+script = ExtResource( 3 )
 
 [node name="playerTest3" parent="KinematicBody" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, 1, 0.102412, 0, 0 )
@@ -120,8 +124,14 @@ anims/move = SubResource( 3 )
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -0.110983, 0.993822, 0, -0.993822, -0.110983, 2.78753, 0, 3.51617 )
 
-[node name="CSGMesh" type="CSGMesh" parent="."]
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CSGMesh" type="CSGMesh" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.248874, -0.979075, 0 )
 material_override = SubResource( 4 )
 mesh = SubResource( 5 )
 material = SubResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.248874, -0.979075, 0 )
+shape = SubResource( 7 )

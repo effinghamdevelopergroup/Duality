@@ -5,6 +5,7 @@ extends KinematicBody
 # var a = 2
 # var b = "text"
 
+var moveVec = Vector3()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,5 +13,6 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	moveVec.y =-3
+	move_and_slide(moveVec,Vector3.DOWN)
