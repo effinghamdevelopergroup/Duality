@@ -14,10 +14,6 @@ config/name="Duality"
 run/main_scene="res://scenes/Game/World.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-Global="*res://scripts/voxel/Global.gd"
-
 [input]
 
 Forward={

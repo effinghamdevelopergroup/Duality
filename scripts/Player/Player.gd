@@ -55,7 +55,6 @@ func jump():
 
 
 func footsteps_loop():
-	var moving = isMoving()
 	if $Timer.time_left <= 0 and isMoving() == true:
 		$AudioStreamPlayer.pitch_scale = rand_range(0.8, 1.2)
 		$AudioStreamPlayer.play()
