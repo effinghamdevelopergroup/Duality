@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Game/Levels/Level5.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Game/Levels/Level2.tscn" type="PackedScene" id=2]
@@ -6,8 +6,12 @@
 [ext_resource path="res://scenes/Game/Levels/Level4.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Game/Levels/Level1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Game/Levels/DungeonEntrance.tscn" type="PackedScene" id=7]
 
 [node name="World" type="Spatial"]
+
+[node name="DungeonEntrance" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 4, 19 )
 
 [node name="Dungeon" type="Spatial" parent="."]
 
@@ -26,4 +30,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64 )
 [node name="Level1" parent="Dungeon" instance=ExtResource( 5 )]
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -22.5744 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.51233, 23.5328 )
