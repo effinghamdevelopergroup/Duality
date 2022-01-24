@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/models/player/PlayerModel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Game/Player/PlayerModel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Sounds/Footsteps/stepstone_1.wav" type="AudioStream" id=3]
 
 [sub_resource type="CylinderShape" id=2]

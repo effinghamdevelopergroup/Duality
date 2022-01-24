@@ -30,4 +30,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64 )
 [node name="Level1" parent="Dungeon" instance=ExtResource( 5 )]
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.51233, 23.5328 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.71755, 23.5328 )
