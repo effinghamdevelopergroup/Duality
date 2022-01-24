@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/kit1/Doorway.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/kit1/FloorTile_01.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/kit1/WallTile_01.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/Doorway.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prefabs/FloorTile_01.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefabs/WallTile_01.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
 
 [node name="TestLevel" type="Spatial"]
