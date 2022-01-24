@@ -18,7 +18,7 @@ func _physics_process(delta):
 	apply_movement(input_vector)
 	apply_gravity(delta)
 	footsteps_loop()
-	jump()
+	#jump()
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
 func get_input_vector():
@@ -37,7 +37,8 @@ func apply_movement(input_vector):
 		animation.play("Idle")
 		
 	if input_vector != Vector3.ZERO:
-		pivot.look_at(input_vector, Vector3.UP)
+		pivot.look_at(input_vector*-50, Vector3.UP)
+		animation.playback_speed = 8
 		animation.play("Move")
 	
 	
