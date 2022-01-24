@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Duality"
-run/main_scene="res://scenes/testScenes/test_animations.tscn"
+run/main_scene="res://scenes/Game/World.tscn"
 config/icon="res://icon.png"
 
 [autoload]
