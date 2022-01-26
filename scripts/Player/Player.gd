@@ -9,6 +9,10 @@ var velocity = Vector3.ZERO
 onready var pivot = $PlayerModel
 onready var animation = $PlayerModel/AnimationPlayer
 
+#Spellcasting
+var active_ability
+
+
 func isMoving():
 	return (velocity.length() > 1.5)
 
@@ -20,6 +24,7 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	footsteps_loop()
 	#jump()
+	use_ability()
 	velocity = move_and_slide(velocity, Vector3.UP)
 
 
@@ -52,6 +57,11 @@ func apply_gravity(delta):
 func jump():
 	if is_on_floor() and Input.is_action_pressed("Jump"):
 		velocity.y = jump_impulse
+
+func use_ability():
+	if Input.is_action_pressed("Ability"):
+		print("ABILITY USED!")
+		pass
 
 
 func footsteps_loop():
