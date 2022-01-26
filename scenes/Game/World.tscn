@@ -30,4 +30,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.71755, 23.5328 )
 
 [node name="ExteriorEntrance" parent="." instance=ExtResource( 7 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.00139165, -0.00164583 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
