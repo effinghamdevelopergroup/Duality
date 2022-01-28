@@ -26,6 +26,8 @@ func _physics_process(delta):
 	#jump()
 	use_ability()
 	velocity = move_and_slide(velocity, Vector3.UP)
+#	if input_vector != Vector3.ZERO and isMoving() == true:
+#		pivot.look_at(velocity*-20, Vector3.UP)
 
 
 func get_input_vector():
@@ -45,7 +47,7 @@ func apply_animations(input_vector):
 	if input_vector == Vector3.ZERO:
 		animation.play("Idle")
 	if input_vector != Vector3.ZERO and isMoving() == true:
-		pivot.look_at(velocity*-20, Vector3.UP)
+		#pivot.look_at(velocity*-20, Vector3.UP)
 		animation.playback_speed = 8
 		animation.play("Move")
 
