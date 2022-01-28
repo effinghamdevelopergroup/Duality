@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Game/Enemy/GolemModel.tscn" type="PackedScene" id=2]
+
+[node name="Golem" type="KinematicBody" groups=["BaseEnemy"]]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0 )
+
+[node name="Head" type="Spatial" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 8.5005, 0, 0, 0, 10.7559, 0, 0, 0, 1.91554, 0, 2.27088, -0.39403 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( -0.0192149, 0, 0.999815, 0, 1, 0, -0.999815, 0, -0.0192149, 8.74228e-08, 1, 0.0589401 )
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="Area"]
+transform = Transform( 1, 7.45058e-09, 5.55112e-16, 0, -4.37114e-08, 1, 7.45058e-09, -1, -4.37114e-08, 0.999816, 0.779959, 0.0192151 )
+polygon = PoolVector2Array( 0, 0, 15, 6, 15, -6 )
+
+[node name="GolemModel" parent="." instance=ExtResource( 2 )]
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
