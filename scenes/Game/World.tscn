@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Game/Levels/Level5.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Game/Levels/Level2.tscn" type="PackedScene" id=2]
@@ -6,10 +6,13 @@
 [ext_resource path="res://scenes/Game/Levels/Level4.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Game/Levels/Level1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Game/ExteriorEntrance.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Main.gd" type="Script" id=8]
 [ext_resource path="res://Prefabs/WallTile_03.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Prefabs/FloorTile_02.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/SetPieces/base/opening2.tscn" type="PackedScene" id=11]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 4, 11 )
 
 [node name="World" type="Spatial"]
 script = ExtResource( 8 )
@@ -18,15 +21,19 @@ script = ExtResource( 8 )
 
 [node name="Level5" parent="Dungeon" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256 )
+visible = false
 
 [node name="Level4" parent="Dungeon" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192 )
+visible = false
 
 [node name="Level3" parent="Dungeon" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128 )
+visible = false
 
 [node name="Level2" parent="Dungeon" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64 )
+visible = false
 
 [node name="Level1" parent="Dungeon" instance=ExtResource( 5 )]
 
@@ -34,9 +41,24 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.71755, 38.5328 )
 
 [node name="exterior" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0173416, 0.133301, -0.0756302 )
 
-[node name="ExteriorEntrance" parent="exterior" instance=ExtResource( 7 )]
+[node name="opening2" parent="exterior" instance=ExtResource( 11 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 24 )
+
+[node name="StaticBody" type="StaticBody" parent="exterior/opening2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="exterior/opening2/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 7.5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="exterior/opening2/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 7.5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="exterior/opening2/StaticBody"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 0, 16.5 )
+shape = SubResource( 1 )
 
 [node name="FloorTile_01" parent="exterior" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
@@ -91,5 +113,10 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 1
 
 [node name="WallTile_12" parent="exterior" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 14 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.859023, -0.101364, 0.501801, -0.244131, 0.780456, 0.575576, -0.449976, -0.616939, 0.645684, 0, 8.15664, 0 )
+light_energy = 1.122
+shadow_color = Color( 0.682353, 0.231373, 0.505882, 1 )
 
 [connection signal="use_ability" from="Player" to="." method="_on_use_ability"]
