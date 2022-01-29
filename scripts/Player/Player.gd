@@ -38,7 +38,7 @@ func _physics_process(delta):
 	var lookDir = velocity
 	lookDir.y = 0
 	if input_vector != Vector3.ZERO and isMoving() == true:
-		pivot.look_at(velocity*-20, Vector3.UP)
+		pivot.look_at(lookDir*-20, Vector3.UP)
 
 func _process(delta):
 	footsteps_loop()
@@ -68,7 +68,8 @@ func apply_animations(input_vector):
 
 
 func apply_gravity(delta):
-	velocity.y -= gravity * delta
+	if !is_on_floor():
+		velocity.y -= gravity * delta
 
 
 func jump():
@@ -113,4 +114,8 @@ func restart_ability_timer():
 
 func _on_PlayerAbilityTimer_timeout():
 	player_ability_timer.stop()
+	pass # Replace with function body.
+
+
+func _on_Timer_timeout():
 	pass # Replace with function body.

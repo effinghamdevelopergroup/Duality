@@ -9,15 +9,15 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Area",
+"base": "Reference",
 "class": "Fireball",
 "language": "GDScript",
-"path": "res://scripts/AbilitySystem/Fireball.gd"
+"path": "res://scripts/AbilitySystem/Abilities/Fireball.gd"
 }, {
-"base": "Area",
+"base": "Reference",
 "class": "IceLance",
 "language": "GDScript",
-"path": "res://scripts/AbilitySystem/IceLance.gd"
+"path": "res://scripts/AbilitySystem/Abilities/IceLance.gd"
 }, {
 "base": "KinematicBody",
 "class": "Player",

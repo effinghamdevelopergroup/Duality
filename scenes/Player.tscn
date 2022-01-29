@@ -37,6 +37,7 @@ one_shot = true
 
 [node name="Health" parent="." instance=ExtResource( 4 )]
 
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="PlayerAbilityTimer" to="." method="_on_PlayerAbilityTimer_timeout"]
 
 [editable path="PlayerModel"]
