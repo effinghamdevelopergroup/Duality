@@ -106,7 +106,8 @@ func create_ability():
 	#ability.velocity = ability.transform.basis.z * ability.ability_velocity
 	emit_signal('use_ability', 
 				active_ability, 
-				$PlayerModel.get_global_transform())
+				$PlayerModel.get_global_transform(),
+				$Hands.get_global_transform())
 
 func restart_ability_timer():
 	player_ability_timer.set_wait_time(.5)
