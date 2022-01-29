@@ -1,34 +1,47 @@
+class_name Player
 extends KinematicBody
 
 export var max_speed = 12
 export var gravity = 70
 export var jump_impulse = 25
 
+#Player Abilities
+var known_abilities = {
+	"Fireball": AbilityDatabase.Fireball,
+	"IceLance": AbilityDatabase.IceLance,
+}
+
+var active_ability = known_abilities["Fireball"]
+
 var velocity = Vector3.ZERO
 
 onready var pivot = $PlayerModel
 onready var animation = $PlayerModel/AnimationPlayer
+onready var player_ability_timer = get_node("PlayerAbilityTimer")
+signal use_ability
 
-#Spellcasting
-var active_ability
-
+func _ready():
+	set_process(true)
+	player_ability_timer.set_one_shot(false)
 
 func isMoving():
 	return (velocity.length() > 1.5)
-
 
 func _physics_process(delta):
 	var input_vector = get_input_vector()
 	apply_movement(input_vector)
 	apply_animations(input_vector)
 	apply_gravity(delta)
-	footsteps_loop()
 	#jump()
-	use_ability()
+
 	velocity = move_and_slide(velocity, Vector3.UP)
 #	if input_vector != Vector3.ZERO and isMoving() == true:
 #		pivot.look_at(velocity*-20, Vector3.UP)
 
+func _process(delta):
+	footsteps_loop()
+	switch_ability()
+	use_ability()
 
 func get_input_vector():
 	var input_vector = Vector3.ZERO
@@ -59,15 +72,43 @@ func apply_gravity(delta):
 func jump():
 	if is_on_floor() and Input.is_action_pressed("Jump"):
 		velocity.y = jump_impulse
-
-func use_ability():
-	if Input.is_action_pressed("Ability"):
-		print("ABILITY USED!")
-		pass
-
-
+		
 func footsteps_loop():
 	if $Timer.time_left <= 0 and isMoving() == true:
 		$AudioStreamPlayer.pitch_scale = rand_range(0.8, 1.2)
 		$AudioStreamPlayer.play()
 		$Timer.start(0.2)
+
+func learn_ability(choosen_ability):
+	var ability_to_learn = AbilityDatabase.Fireball.instance()
+	#TODO: Add choosen ability to the players collection.
+
+func switch_ability():
+	#Temp code to switch abilities for testing.
+	if Input.is_action_pressed("SwitchAbility"):
+		if active_ability == known_abilities["Fireball"]:
+			active_ability = known_abilities["IceLance"]
+		else:
+			active_ability = known_abilities["Fireball"]
+
+func use_ability():
+	if Input.is_action_pressed("Ability") and player_ability_timer.is_stopped():
+		create_ability()
+		restart_ability_timer()
+
+func create_ability():
+	#var ability = active_ability.instance()#IceLance.instance()
+	#owner.add_child(ability)
+	#ability.transform = $Head.global_transform
+	#ability.velocity = ability.transform.basis.z * ability.ability_velocity
+	emit_signal('use_ability', 
+				active_ability, 
+				$PlayerModel.get_global_transform())
+
+func restart_ability_timer():
+	player_ability_timer.set_wait_time(.5)
+	player_ability_timer.start()
+
+func _on_PlayerAbilityTimer_timeout():
+	player_ability_timer.stop()
+	pass # Replace with function body.
