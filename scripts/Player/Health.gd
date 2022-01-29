@@ -3,8 +3,8 @@ extends Node
 signal health_changed(health)
 signal health_depleted
 
-var health = 0
-export(int) var max_health = 9
+var health = 100
+export(int) var max_health = 100
 
 func _ready():
 	health = max_health

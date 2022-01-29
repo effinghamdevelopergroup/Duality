@@ -11,7 +11,6 @@ func initialize(max_value):
 
 func _on_Interface_health_updated(new_health):
 	animate_value(current_health, new_health)
-	update_count_text(new_health)
 	current_health = new_health
 
 func animate_value(start, end):
@@ -20,6 +19,3 @@ func animate_value(start, end):
 	$Tween.start()
 	if end < start:
 		$AnimationPlayer.play("shake")
-
-func update_count_text(value):
-	$Count/Number.text = str(round(value)) + '/' + str(maximum)
