@@ -80,4 +80,5 @@ anims/RESET = SubResource( 2 )
 transform = Transform( 0.33862, 0, 0, 0, 0.337568, 0, 0, 0, 0.720267, -0.0121589, 0.0832111, -0.332512 )
 shape = SubResource( 3 )
 
+[connection signal="area_entered" from="." to="." method="_on_Fireball_area_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]

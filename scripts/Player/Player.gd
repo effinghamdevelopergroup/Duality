@@ -41,6 +41,7 @@ func dead():
 
 
 func _physics_process(delta):
+	# Yes I know this doesn't feel right but here we are
 	if dead():
 		die()
 		return
@@ -57,6 +58,7 @@ func _physics_process(delta):
 		pivot.look_at(lookDir*-20, Vector3.UP)
 
 func _process(delta):
+	# Yes I know this doesn't feel right but here we are
 	if dead():
 		die()
 		return
@@ -81,7 +83,6 @@ func apply_animations(input_vector):
 	if input_vector == Vector3.ZERO:
 		animation.play("Idle")
 	if input_vector != Vector3.ZERO and isMoving() == true:
-		health.take_damage(rand_range(0, 3))
 		#pivot.look_at(velocity*-20, Vector3.UP)
 		animation.playback_speed = 8
 		animation.play("Move")
@@ -127,7 +128,8 @@ func create_ability():
 	#ability.velocity = ability.transform.basis.z * ability.ability_velocity
 	emit_signal('use_ability', 
 				active_ability, 
-				$PlayerModel.get_global_transform())
+				$PlayerModel.get_global_transform(),
+				$Hands.get_global_transform())
 
 func restart_ability_timer():
 	player_ability_timer.set_wait_time(.5)
