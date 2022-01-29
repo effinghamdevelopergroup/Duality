@@ -29,6 +29,11 @@ volume_db = -20.0
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="PlayerAbilityTimer" type="Timer" parent="."]
+
 [node name="PlayerModel" parent="." instance=ExtResource( 2 )]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="PlayerAbilityTimer" to="." method="_on_PlayerAbilityTimer_timeout"]
 
 [editable path="PlayerModel"]
