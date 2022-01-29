@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/kit1/base/tileSet3.material" type="Material" id=1]
+[ext_resource path="res://assets/kit1/base/Doorway_01.obj" type="ArrayMesh" id=2]
+
+[sub_resource type="ConvexPolygonShape" id=9]
+points = PoolVector3Array( -2.01418, 3.0782, -0.114184, 0.794326, 4.01418, 0.112766, 0.794326, 3.10651, 0.112766, 0.794326, 4.01418, -0.114184, -2.01418, 4.01418, 0.112766, -2.01418, 4.01418, -0.114184, -2.01418, 3.0782, 0.112766, 0.794326, 3.10651, -0.114184 )
+
+[sub_resource type="ConvexPolygonShape" id=10]
+points = PoolVector3Array( -1.21986, 3.07801, 0.112766, -2.01418, -0.0138819, -0.114184, -2.01418, -0.0138819, 0.112766, -2.01418, 3.07801, -0.114184, -1.21986, -0.0138819, -0.114184, -1.21986, -0.0138819, 0.112766, -2.01418, 3.07801, 0.112766, -1.21986, 3.07801, -0.114184 )
+
+[node name="Doorway" type="StaticBody"]
+
+[node name="Doorway_01" type="MeshInstance" parent="."]
+material_override = ExtResource( 1 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="."]
+shape = SubResource( 9 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0 )
+shape = SubResource( 10 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+shape = SubResource( 10 )
