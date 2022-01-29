@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/kit1/base/vines_01.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/kit1/base/Material_001.material" type="Material" id=2]
+
+[node name="vines_01" type="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2 )
+material_override = ExtResource( 2 )
+mesh = ExtResource( 1 )
+material/0 = null
