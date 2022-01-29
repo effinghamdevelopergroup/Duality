@@ -8,11 +8,31 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area",
+"class": "Fireball",
+"language": "GDScript",
+"path": "res://scripts/AbilitySystem/Fireball.gd"
+}, {
+"base": "Area",
+"class": "IceLance",
+"language": "GDScript",
+"path": "res://scripts/AbilitySystem/IceLance.gd"
+} ]
+_global_script_class_icons={
+"Fireball": "",
+"IceLance": ""
+}
+
 [application]
 
 config/name="Duality"
 run/main_scene="res://scenes/Game/World.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+AbilityDatabase="*res://scripts/AbilitySystem/AbilityDatabase.gd"
 
 [input]
 
