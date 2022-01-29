@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Game/Levels/Level5.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Game/Levels/Level2.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Game/ExteriorEntrance.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Main.gd" type="Script" id=8]
+[ext_resource path="res://Prefabs/WallTile_03.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Prefabs/FloorTile_02.tscn" type="PackedScene" id=10]
 
 [node name="World" type="Spatial"]
 script = ExtResource( 8 )
@@ -29,9 +31,65 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64 )
 [node name="Level1" parent="Dungeon" instance=ExtResource( 5 )]
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.71755, 23.5328 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.71755, 38.5328 )
 
-[node name="ExteriorEntrance" parent="." instance=ExtResource( 7 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+[node name="exterior" type="Spatial" parent="."]
+
+[node name="ExteriorEntrance" parent="exterior" instance=ExtResource( 7 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 24 )
+
+[node name="FloorTile_01" parent="exterior" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="FloorTile_02" parent="exterior" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="FloorTile_03" parent="exterior" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
+
+[node name="WallTile_01" parent="exterior" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 10 )
+
+[node name="WallTile_02" parent="exterior" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 6 )
+
+[node name="WallTile_03" parent="exterior" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 2 )
+
+[node name="WallTile_04" parent="exterior" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 10 )
+
+[node name="WallTile_05" parent="exterior" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 6 )
+
+[node name="WallTile_06" parent="exterior" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 2 )
+
+[node name="FloorTile_04" parent="exterior" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14 )
+
+[node name="FloorTile_05" parent="exterior" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18 )
+
+[node name="FloorTile_06" parent="exterior" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22 )
+
+[node name="WallTile_07" parent="exterior" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 22 )
+
+[node name="WallTile_08" parent="exterior" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 18 )
+
+[node name="WallTile_09" parent="exterior" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 14 )
+
+[node name="WallTile_10" parent="exterior" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 22 )
+
+[node name="WallTile_11" parent="exterior" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 18 )
+
+[node name="WallTile_12" parent="exterior" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 14 )
 
 [connection signal="use_ability" from="Player" to="." method="_on_use_ability"]
