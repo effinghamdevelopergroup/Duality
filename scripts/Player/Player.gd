@@ -35,8 +35,10 @@ func _physics_process(delta):
 	#jump()
 
 	velocity = move_and_slide(velocity, Vector3.UP)
-#	if input_vector != Vector3.ZERO and isMoving() == true:
-#		pivot.look_at(velocity*-20, Vector3.UP)
+	var lookDir = velocity
+	lookDir.y = 0
+	if input_vector != Vector3.ZERO and isMoving() == true:
+		pivot.look_at(velocity*-20, Vector3.UP)
 
 func _process(delta):
 	footsteps_loop()
