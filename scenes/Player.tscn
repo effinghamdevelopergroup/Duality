@@ -27,6 +27,7 @@ stream = ExtResource( 3 )
 volume_db = -20.0
 
 [node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [node name="PlayerAbilityTimer" type="Timer" parent="."]
 
