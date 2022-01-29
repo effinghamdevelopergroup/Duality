@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/Game/Levels/Level5.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Game/Levels/Level2.tscn" type="PackedScene" id=2]
@@ -7,10 +7,11 @@
 [ext_resource path="res://scenes/Game/Levels/Level1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Game/ExteriorEntrance.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Main.gd" type="Script" id=8]
+[ext_resource path="res://scenes/Game/Interface/Interface.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Main.gd" type="Script" id=9]
 
 [node name="World" type="Spatial"]
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="Dungeon" type="Spatial" parent="."]
 
@@ -34,4 +35,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.71755, 23.5328 )
 [node name="ExteriorEntrance" parent="." instance=ExtResource( 7 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 
-[connection signal="use_ability" from="Player" to="." method="_on_use_ability"]
+[node name="Interface" parent="." instance=ExtResource( 8 )]
