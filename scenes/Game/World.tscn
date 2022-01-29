@@ -33,5 +33,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.71755, 23.5328 )
 
 [node name="ExteriorEntrance" parent="." instance=ExtResource( 7 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
-
-[connection signal="use_ability" from="Player" to="." method="_on_use_ability"]
