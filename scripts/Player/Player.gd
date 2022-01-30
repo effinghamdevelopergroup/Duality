@@ -6,12 +6,9 @@ export var gravity = 70
 export var jump_impulse = 25
 
 #Player Abilities
-var known_abilities = {
-	"Fireball": AbilityDatabase.Fireball,
-	"IceLance": AbilityDatabase.IceLance,
-}
+var known_abilities = { }
 
-var active_ability = known_abilities["Fireball"]
+var active_ability
 
 var dead = false
 var can_move = true
@@ -24,6 +21,7 @@ onready var game_over_screen = get_node("InterfaceLayer/GameOverScreen/Panel")
 signal use_ability
 
 func _ready():
+	AbilityDatabase.Plyr = self
 	set_process(true)
 	player_ability_timer.set_one_shot(false)
 
@@ -100,7 +98,6 @@ func apply_gravity(delta):
 	if !is_on_floor():
 		velocity.y -= gravity * delta
 
-
 func jump():
 	if is_on_floor() and Input.is_action_pressed("Jump"):
 		velocity.y = jump_impulse
@@ -117,7 +114,7 @@ func learn_ability(choosen_ability):
 
 func switch_ability():
 	#Temp code to switch abilities for testing.
-	if Input.is_action_pressed("SwitchAbility"):
+	if Input.is_action_pressed("SwitchAbility") and known_abilities.size() < 0:
 		if active_ability == known_abilities["Fireball"]:
 			active_ability = known_abilities["IceLance"]
 		else:
@@ -134,10 +131,11 @@ func create_ability():
 	#owner.add_child(ability)
 	#ability.transform = $Head.global_transform
 	#ability.velocity = ability.transform.basis.z * ability.ability_velocity
-	emit_signal('use_ability', 
-				active_ability, 
-				$PlayerModel.get_global_transform(),
-				$Hands.get_global_transform())
+	if active_ability != null:
+		emit_signal('use_ability', 
+					active_ability, 
+					$PlayerModel.get_global_transform(),
+					$Hands.get_global_transform())
 
 func restart_ability_timer():
 	player_ability_timer.set_wait_time(.5)
@@ -150,3 +148,7 @@ func _on_PlayerAbilityTimer_timeout():
 
 func _on_Timer_timeout():
 	pass # Replace with function body.
+
+func _on_ability_learned():
+	print("I'm in the player script now bitches")
+	pass
