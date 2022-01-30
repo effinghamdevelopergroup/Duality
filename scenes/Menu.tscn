@@ -47,7 +47,7 @@ text = "QUIT"
 margin_left = -9.0
 margin_top = -6.0
 margin_right = -2.0
-margin_bottom = 9.0
+margin_bottom = -174.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
