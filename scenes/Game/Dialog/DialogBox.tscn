@@ -5,6 +5,7 @@
 [ext_resource path="res://assets/Dialog/FireOrIce.wav" type="AudioStream" id=3]
 
 [node name="DialogBox" type="Polygon2D"]
+position = Vector2( 0, -64 )
 color = Color( 0, 0, 0, 0.211765 )
 polygon = PoolVector2Array( 128, 576, 128, 384, 896, 384, 896, 576 )
 script = ExtResource( 2 )
