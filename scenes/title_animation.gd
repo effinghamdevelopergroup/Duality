@@ -8,18 +8,17 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$VBoxContainer/Start.grab_focus()
-	$AudioStreamPlayer.play()
+	_animated_sprite.play("title")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
+onready var _animated_sprite = $AnimatedSprite
 
-func _on_Start_pressed():
-	get_tree().change_scene("res://scenes/Game/World.tscn")
-
-
-func _on_Quit_pressed():
-	get_tree().quit()
+#func _process(_delta):
+#	if !_animated_sprite.is_playing():
+#		_animated_sprite.play("title")
+#		if _animated_sprite.frame == 3:
+#			_animated_sprite.stop()

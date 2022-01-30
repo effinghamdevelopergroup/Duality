@@ -67,7 +67,7 @@ func create_ability():
 
 
 func restart_ability_timer():
-	gollem_ability_timer.set_wait_time(.5)
+	gollem_ability_timer.set_wait_time(.01)
 	gollem_ability_timer.start()
 
 

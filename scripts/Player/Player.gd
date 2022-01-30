@@ -6,12 +6,9 @@ export var gravity = 70
 export var jump_impulse = 25
 
 #Player Abilities
-var known_abilities = {
-	"Fireball": AbilityDatabase.Fireball,
-	"IceLance": AbilityDatabase.IceLance,
-}
+var known_abilities = { }
 
-var active_ability = known_abilities["Fireball"]
+var active_ability
 
 var dead = false
 var can_move = true
@@ -24,6 +21,7 @@ onready var game_over_screen = get_node("InterfaceLayer/GameOverScreen/Panel")
 signal use_ability
 
 func _ready():
+	AbilityDatabase.Plyr = self
 	set_process(true)
 	player_ability_timer.set_one_shot(false)
 
@@ -55,7 +53,15 @@ func _physics_process(delta):
 	var lookDir = velocity
 	lookDir.y = 0
 	if input_vector != Vector3.ZERO and isMoving() == true:
-		pivot.look_at(lookDir*-20, Vector3.UP)
+#		pivot.look_at(lookDir, Vector3.UP)
+		#pivot.transform.angle.y =90
+		#pivot.get_translation() + lookDir
+
+		#pivot.angle.y = lerp_angle( pivot.angle.y, atan2( lookDir.x, lookDir.z ), 1 ) 
+		#pivot.look_at(lookDir*-20, Vector3.UP)
+		lookDir.z*=-1
+		lookDir.x*=-1
+		pivot.look_at(lookDir+transform.origin , Vector3.UP)
 
 func _process(delta):
 	# Yes I know this doesn't feel right but here we are
@@ -92,7 +98,6 @@ func apply_gravity(delta):
 	if !is_on_floor():
 		velocity.y -= gravity * delta
 
-
 func jump():
 	if is_on_floor() and Input.is_action_pressed("Jump"):
 		velocity.y = jump_impulse
@@ -109,7 +114,7 @@ func learn_ability(choosen_ability):
 
 func switch_ability():
 	#Temp code to switch abilities for testing.
-	if Input.is_action_pressed("SwitchAbility"):
+	if Input.is_action_pressed("SwitchAbility") and known_abilities.size() < 0:
 		if active_ability == known_abilities["Fireball"]:
 			active_ability = known_abilities["IceLance"]
 		else:
@@ -126,10 +131,11 @@ func create_ability():
 	#owner.add_child(ability)
 	#ability.transform = $Head.global_transform
 	#ability.velocity = ability.transform.basis.z * ability.ability_velocity
-	emit_signal('use_ability', 
-				active_ability, 
-				$PlayerModel.get_global_transform(),
-				$Hands.get_global_transform())
+	if active_ability != null:
+		emit_signal('use_ability', 
+					active_ability, 
+					$PlayerModel.get_global_transform(),
+					$Hands.get_global_transform())
 
 func restart_ability_timer():
 	player_ability_timer.set_wait_time(.5)
@@ -153,3 +159,7 @@ func _on_HitBox_area_entered(area):
 		area.queue_free()
 	print("GOLUM HEALTH")
 	print(health.health)
+
+func _on_ability_learned():
+	print("I'm in the player script now bitches")
+	pass

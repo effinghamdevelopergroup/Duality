@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/title_animation.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Music/titlemaybe.wav" type="AudioStream" id=3]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -46,7 +47,10 @@ text = "QUIT"
 margin_left = -9.0
 margin_top = -6.0
 margin_right = -2.0
-margin_bottom = 9.0
+margin_bottom = -174.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
