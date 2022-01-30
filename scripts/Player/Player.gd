@@ -13,21 +13,38 @@ var known_abilities = {
 
 var active_ability = known_abilities["Fireball"]
 
+var dead = false
+var can_move = true
 var velocity = Vector3.ZERO
-
 onready var pivot = $PlayerModel
 onready var animation = $PlayerModel/AnimationPlayer
+onready var health = $Health
 onready var player_ability_timer = get_node("PlayerAbilityTimer")
+onready var game_over_screen = get_node("InterfaceLayer/GameOverScreen/Panel")
 signal use_ability
 
 func _ready():
 	set_process(true)
 	player_ability_timer.set_one_shot(false)
 
+
 func isMoving():
 	return (velocity.length() > 1.5)
 
+
+func die():
+	game_over_screen.show()
+
+
+func dead():
+	return (health.health <= 0)
+
+
 func _physics_process(delta):
+	# Yes I know this doesn't feel right but here we are
+	if dead():
+		die()
+		return
 	var input_vector = get_input_vector()
 	apply_movement(input_vector)
 	apply_animations(input_vector)
@@ -41,6 +58,10 @@ func _physics_process(delta):
 		pivot.look_at(lookDir*-20, Vector3.UP)
 
 func _process(delta):
+	# Yes I know this doesn't feel right but here we are
+	if dead():
+		die()
+		return
 	footsteps_loop()
 	switch_ability()
 	use_ability()
@@ -93,6 +114,7 @@ func switch_ability():
 			active_ability = known_abilities["IceLance"]
 		else:
 			active_ability = known_abilities["Fireball"]
+		print(active_ability)
 
 func use_ability():
 	if Input.is_action_pressed("Ability") and player_ability_timer.is_stopped():
