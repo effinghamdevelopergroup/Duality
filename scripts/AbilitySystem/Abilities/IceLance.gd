@@ -25,4 +25,4 @@ func _on_VisibilityNotifier_screen_exited():
 
 func _on_IceBlast_area_entered(area):
 	emit_signal("exploded", transform.origin)
-	queue_free()
+	#queue_free()

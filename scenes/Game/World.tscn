@@ -124,3 +124,4 @@ shadow_color = Color( 0.682353, 0.231373, 0.505882, 1 )
 transform = Transform( -0.999998, 0, -0.00183281, 0, 1, 0, 0.00183281, 0, -0.999998, 0, 0.0577028, -30.1004 )
 
 [connection signal="use_ability" from="Player" to="." method="_on_use_ability"]
+[connection signal="use_ability" from="Golem" to="." method="_on_Golem_use_ability"]

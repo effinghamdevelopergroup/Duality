@@ -142,3 +142,14 @@ func _on_PlayerAbilityTimer_timeout():
 
 func _on_Timer_timeout():
 	pass # Replace with function body.
+
+
+func _on_HitBox_area_entered(area):
+	if area.name == "IceBlast" and active_ability != AbilityDatabase.IceLance:
+		health.take_damage(10)
+		area.queue_free()
+	elif area.name == "Fireball" and active_ability != AbilityDatabase.Fireball:
+		health.take_damage(10)
+		area.queue_free()
+	print("GOLUM HEALTH")
+	print(health.health)
