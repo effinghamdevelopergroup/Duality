@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Game/Interface/interface.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Game/Interface/bar/LifeBar.tscn" type="PackedScene" id=2]
+
+[node name="Interface" type="Control"]
+anchor_right = 1.0
+margin_left = 61.0
+margin_top = 122.0
+margin_right = 61.0
+margin_bottom = 715.0
+rect_scale = Vector2( 1.03152, 0.389031 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bars" type="VBoxContainer" parent="."]
+margin_left = -18.4195
+margin_top = 804.564
+margin_right = 531.581
+margin_bottom = 909.564
+rect_scale = Vector2( 0.667636, 1.47505 )
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LifeBar" parent="Bars" instance=ExtResource( 2 )]
+margin_right = 550.0
+
+[connection signal="health_updated" from="." to="Bars/LifeBar" method="_on_Interface_health_updated"]

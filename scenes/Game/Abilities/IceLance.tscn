@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/models/FX/elementals/IceElement2.fbx" type="PackedScene" id=1]
+[ext_resource path="res://assets/models/FX/elementals/IceElement1.fbx" type="PackedScene" id=2]
+[ext_resource path="res://scripts/AbilitySystem/Abilities/IceLance.gd" type="Script" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Default"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("IceElement1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("IceElement2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("IceElement1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("IceElement2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="BoxShape" id=3]
+
+[node name="IceBlast" type="Area"]
+script = ExtResource( 6 )
+
+[node name="IceElement1" parent="." instance=ExtResource( 2 )]
+
+[node name="IceElement2" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Default = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.203695, 0, 0, 0, 0.154843, 0, 0, 0, 1, -0.0344, 0.0259142, 0.086284 )
+shape = SubResource( 3 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_IceBlast_area_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]

@@ -8,11 +8,37 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area",
+"class": "Fireball",
+"language": "GDScript",
+"path": "res://scripts/AbilitySystem/Abilities/Fireball.gd"
+}, {
+"base": "Area",
+"class": "IceLance",
+"language": "GDScript",
+"path": "res://scripts/AbilitySystem/Abilities/IceLance.gd"
+}, {
+"base": "KinematicBody",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scripts/Player/Player.gd"
+} ]
+_global_script_class_icons={
+"Fireball": "",
+"IceLance": "",
+"Player": ""
+}
+
 [application]
 
 config/name="Duality"
 run/main_scene="res://scenes/Game/World.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+AbilityDatabase="*res://scripts/AbilitySystem/AbilityDatabase.gd"
 
 [input]
 
@@ -41,16 +67,6 @@ Jump={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
-Place={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
-}
-Break={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
-}
 Pause={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
@@ -64,6 +80,21 @@ Click={
 Ability={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+SwitchAbility={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Place={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Break={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 
