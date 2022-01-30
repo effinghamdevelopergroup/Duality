@@ -6,7 +6,8 @@ export var gravity = 70
 var target
 var space_state
 var velocity = Vector3.ZERO
-onready var animation = $GolemModel/AnimationPlayer
+onready var animation = $IceGollem/AnimationPlayer
+var active_ability = AbilityDatabase.IceLance
 
 
 func _ready():
@@ -15,12 +16,17 @@ func _ready():
 
 func _physics_process(delta):
 	apply_gravity(delta)
+	animation.play("Idle")
 	if target:
-		var result = space_state.intersect_ray(global_transform.origin, target.global_transform.origin)
+		var result = space_state.intersect_ray($Area/CollisionPolygon.global_transform.origin, target.global_transform.origin)
 		if result:
 			if result.collider.is_in_group("Player"):
 				look_at(target.global_transform.origin, Vector3.UP)
+				#animation.playback_speed = 8
+				#animation.play("Move")
 				move_to_target(delta)
+			else:
+				animation.play("Idle")
 
 
 func apply_gravity(delta):
@@ -29,11 +35,13 @@ func apply_gravity(delta):
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("Player"):
+		print("HI")
 		target = body
 
 
 func _on_Area_body_exited(body):
 	if body.is_in_group("Player"):
+		print("bye")
 		target = null
 
 

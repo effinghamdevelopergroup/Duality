@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Game/Levels/Level5.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Game/Levels/Level2.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/Game/Levels/Level4.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Game/Levels/Level1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Game/Enemy/Golem.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Main.gd" type="Script" id=8]
 [ext_resource path="res://Prefabs/WallTile_03.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Prefabs/FloorTile_02.tscn" type="PackedScene" id=10]
@@ -38,7 +39,7 @@ visible = false
 [node name="Level1" parent="Dungeon" instance=ExtResource( 5 )]
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.71755, 38.5328 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.439341, 38.5328 )
 
 [node name="exterior" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0173416, 0.133301, -0.0756302 )
@@ -118,5 +119,8 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 1
 transform = Transform( 0.859023, -0.101364, 0.501801, -0.244131, 0.780456, 0.575576, -0.449976, -0.616939, 0.645684, 0, 8.15664, 0 )
 light_energy = 1.122
 shadow_color = Color( 0.682353, 0.231373, 0.505882, 1 )
+
+[node name="Golem" parent="." instance=ExtResource( 7 )]
+transform = Transform( -0.999998, 0, -0.00183281, 0, 1, 0, 0.00183281, 0, -0.999998, 0, 0.0577028, -30.1004 )
 
 [connection signal="use_ability" from="Player" to="." method="_on_use_ability"]

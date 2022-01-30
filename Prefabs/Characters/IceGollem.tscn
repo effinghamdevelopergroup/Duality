@@ -19,7 +19,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -103,6 +103,7 @@ tracks/2/keys = {
 }
 
 [node name="IceGollem" type="Spatial"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="golem0" type="MeshInstance" parent="."]
 visible = false
@@ -118,6 +119,7 @@ skeleton = NodePath("../golem0")
 material/0 = null
 
 [node name="golem2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 3.49691e-07, 0, 1, 0, -3.49691e-07, 0, 1, 0, 0, 0 )
 visible = false
 material_override = ExtResource( 3 )
 mesh = ExtResource( 4 )
