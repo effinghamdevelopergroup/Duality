@@ -3,6 +3,9 @@
 [ext_resource path="res://assets/kit1/base/Material_001.material" type="Material" id=1]
 [ext_resource path="res://assets/kit1/base/column1.material" type="Material" id=2]
 
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 2, 1 )
+
 [sub_resource type="ArrayMesh" id=1]
 blend_shape_mode = 0
 surfaces/0 = {
@@ -19,13 +22,14 @@ surfaces/0 = {
 "vertex_count": 204
 }
 
-[sub_resource type="ConvexPolygonShape" id=2]
-points = PoolVector3Array( -0.0076, -0.00344908, 0.0395882, 0.010638, 0.0106377, 0.00271712, 0.010638, -0.010534, 0.00271712, -0.0104, -0.0104, 2.2129e-05, -0.010534, 0.0106377, 0.00271712, 0.0062, 0.00619977, 0.0397582, 0.0036684, -0.0078523, 0.040234, -0.0035644, 0.00768868, 0.040234, 0.00768892, -0.00356449, 0.040234, 0.0104, 0.0103997, 0.000220912, -0.00785227, 0.00366613, 0.040234, -0.00344896, -0.0076, 0.0395881, -0.0102963, 0.0104, 0.000220366, 0.0104, -0.010296, 0.000220912, -0.010534, -0.010534, 0.00271712, 0.0036684, 0.00768868, 0.040234, 0.00768892, 0.00366821, 0.040234, -0.00619994, -0.0062, 0.0400922, -0.00609623, 0.0062, 0.0397589, 0.0062, -0.00609606, 0.0397582 )
-
 [node name="column" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00854158, 0.0194607, 0.0043335 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+shape = SubResource( 2 )
 
 [node name="Cube" type="MeshInstance" parent="."]
 transform = Transform( 100, 0, 0, 0, -3.57628e-05, 100, 0, -100, -3.57628e-05, 0, 0, 0 )
@@ -33,7 +37,3 @@ material_override = ExtResource( 2 )
 mesh = SubResource( 1 )
 skeleton = NodePath("")
 material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Cube"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 2 )

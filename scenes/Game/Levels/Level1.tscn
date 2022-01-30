@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Prefabs/WallTile_04.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prefabs/SetPieces/column.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Prefabs/Doorway_04.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Prefabs/MagmaFloorTile_01.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Prefabs/IceFloorTile_01B.tscn" type="PackedScene" id=6]
@@ -886,3 +887,51 @@ light_energy = 6.554
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65259, 3, -46 )
 light_color = Color( 0.4, 0.611765, 0.768627, 1 )
 light_energy = 6.554
+
+[node name="column" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99146, 0.0194607, -4.99567 )
+
+[node name="column2" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00854, 0.0194607, -4.99567 )
+
+[node name="column3" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99146, 0.0194607, -12.9957 )
+
+[node name="column4" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00854, 0.0194607, -12.9957 )
+
+[node name="column5" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99146, 0.0194607, -20.9957 )
+
+[node name="column6" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00854, 0.0194607, -20.9957 )
+
+[node name="column7" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99146, 0.0194607, -28.9957 )
+
+[node name="column8" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00854, 0.0194607, -28.9957 )
+
+[node name="column9" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99146, 0.0194607, -36.9957 )
+
+[node name="column10" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00854, 0.0194607, -36.9957 )
+
+[node name="column11" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99146, 0.0194607, -44.9957 )
+
+[node name="column12" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00854, 0.0194607, -44.9957 )
+
+[node name="column13" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99146, 0.0194607, -52.9957 )
+
+[node name="column14" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00854, 0.0194607, -52.9957 )
+
+[node name="column15" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99146, 0.0194607, -60.9957 )
+
+[node name="column16" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00854, 0.0194607, -60.9957 )

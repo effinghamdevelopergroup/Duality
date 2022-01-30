@@ -55,7 +55,15 @@ func _physics_process(delta):
 	var lookDir = velocity
 	lookDir.y = 0
 	if input_vector != Vector3.ZERO and isMoving() == true:
-		pivot.look_at(lookDir*-20, Vector3.UP)
+#		pivot.look_at(lookDir, Vector3.UP)
+		#pivot.transform.angle.y =90
+		#pivot.get_translation() + lookDir
+
+		#pivot.angle.y = lerp_angle( pivot.angle.y, atan2( lookDir.x, lookDir.z ), 1 ) 
+		#pivot.look_at(lookDir*-20, Vector3.UP)
+		lookDir.z*=-1
+		lookDir.x*=-1
+		pivot.look_at(lookDir+transform.origin , Vector3.UP)
 
 func _process(delta):
 	# Yes I know this doesn't feel right but here we are
